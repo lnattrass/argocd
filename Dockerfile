@@ -14,5 +14,8 @@ RUN apt-get update && \
     curl -o /usr/local/bin/sops -L https://github.com/mozilla/sops/releases/download/3.2.0/sops-3.2.0.linux && \
     chmod +x /usr/local/bin/sops
 
+# Helper script to run in pre
+ADD unsops /usr/local/bin/unsops
+
 # Switch back to non-root user
 USER argocd

@@ -1,0 +1,4 @@
+#!/bin/sh
+#Prepare / deploy secrets
+cat $SOPS_KEY | base64 -d | gpg --import
+find . -name '*.secret.yaml' -type f -exec echo 'Decrypt: {}' \; -exec bin/sops -d -i '{}' \;

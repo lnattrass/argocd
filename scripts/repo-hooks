@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+
+REPO_ROOT=$(git rev-parse --show-toplevel)
+
+case $1 in
+  "init")
+    if [ -f "${REPO_ROOT}/cicd/init" ]; then
+      . "${REPO_ROOT}/cicd/init"
+    fi
+  ;;
+  "generate")
+    if [ -f "${REPO_ROOT}/cicd/generate" ]; then
+      . "${REPO_ROOT}/cicd/generate"
+    fi
+  ;;
+esac

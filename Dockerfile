@@ -1,4 +1,4 @@
-FROM argoproj/argocd:v1.1.2
+FROM argoproj/argocd:v1.2.3
 
 # Switch to root for the ability to perform install
 USER root

@@ -1,9 +1,6 @@
 #!/bin/bash
 #
 
-# Pull submodules
-git submodule update --init
-
 REPO_ROOT=$(git rev-parse --show-toplevel)
 
 case $1 in

@@ -1,4 +1,4 @@
-FROM argoproj/argocd:v1.2.3
+FROM argoproj/argocd:v1.3.0
 
 # Switch to root for the ability to perform install
 USER root
@@ -11,9 +11,14 @@ RUN apt-get update \
         gpg \
         python3-yaml \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && curl -o /usr/local/bin/sops -L https://github.com/mozilla/sops/releases/download/3.2.0/sops-3.2.0.linux \
-    && chmod +x /usr/local/bin/sops 
+    && chmod +x /usr/local/bin/sops \
+    && curl -o /tmp/helm3.tar.gz -L https://get.helm.sh/helm-v3.0.0-rc.4-linux-amd64.tar.gz \
+    && tar zxvf /tmp/helm3.tar.gz -C /tmp \
+    && mv /tmp/linux-amd64/helm /usr/local/bin/helm3 \
+    && chmod +x /usr/local/bin/helm3 \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
+
 
 # Helper script to run in pre
 ADD scripts/* /usr/local/bin/

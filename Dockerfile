@@ -13,7 +13,7 @@ RUN apt-get update \
     && apt-get clean \
     && curl -o /usr/local/bin/sops -L https://github.com/mozilla/sops/releases/download/3.2.0/sops-3.2.0.linux \
     && chmod +x /usr/local/bin/sops \
-    && curl -o /tmp/helm3.tar.gz -L https://get.helm.sh/helm-v3.0.0-rc.4-linux-amd64.tar.gz \
+    && curl -o /tmp/helm3.tar.gz -L https://get.helm.sh/helm-v3.0.0-linux-amd64.tar.gz \
     && tar zxvf /tmp/helm3.tar.gz -C /tmp \
     && mv /tmp/linux-amd64/helm /usr/local/bin/helm3 \
     && chmod +x /usr/local/bin/helm3 \

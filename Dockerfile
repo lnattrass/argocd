@@ -10,6 +10,7 @@ RUN apt-get update \
         curl \
         gpg \
         python3-yaml \
+        dumb-init \
     && apt-get clean \
     && curl -o /usr/local/bin/sops -L https://github.com/mozilla/sops/releases/download/3.2.0/sops-3.2.0.linux \
     && chmod +x /usr/local/bin/sops \
@@ -25,3 +26,4 @@ ADD scripts/* /usr/local/bin/
 
 # Switch back to non-root user
 USER argocd
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
